@@ -14,7 +14,7 @@ pipeline {
 
     environment {
       DOCKERHUB_CREDENTIALS = credentials('DockerHub')
-      IMAGE_NAME = 'ndimovflutter/mynodejsapp'
+      IMAGE_NAME = 'ndimovflutter/examjenkins'
     }
 
     stages {
