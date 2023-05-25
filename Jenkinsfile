@@ -5,7 +5,7 @@ pipeline {
     }
 
     tools {
-        nodejs 'Maven 3.9.2'
+        nodejs 'Mvn'
         dockerTool 'docker'
     }
     triggers {
