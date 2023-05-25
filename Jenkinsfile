@@ -54,6 +54,7 @@ pipeline {
                 sh 'docker container run -d --name mynodejsapp ndimovflutter/mynodejsapp'
             }
         }
+       }
     }
  }
 
