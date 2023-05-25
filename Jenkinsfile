@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn ci'
+                sh 'mvn clean install'
             }
         }
         stage('Test') {
@@ -56,8 +56,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker container rm -f mynodejsapp || true'
-                sh 'docker container run -d --name mynodejsapp ndimovflutter/mynodejsapp'
+                sh 'docker run -d -p port:8080 ${IMAGE_NAME}:${BUILD_NUMBER}'
             }
         }
     }
