@@ -5,7 +5,7 @@ pipeline {
     }
 
     tools {
-        maven 'Maven 3.9.2'
+        nodejs 'Maven 3.9.2'
         dockerTool 'docker'
     }
     triggers {
@@ -17,14 +17,20 @@ pipeline {
       IMAGE_NAME = 'ndimovflutter/mynodejsapp'
     }
 
-       stage('CloneRepo') {
+    stages {
+        stage('Clean') {
             steps {
-                git branch: 'main', url: 'https://github.com/NikolayFlutterInt/spring-with-maven'
+                cleanWs()
+            }
+        }
+        stage('CloneRepo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/NikolayFlutterInt/spring-with-maven.git'
             }
         }
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn ci'
             }
         }
         stage('Test') {
@@ -54,7 +60,5 @@ pipeline {
                 sh 'docker container run -d --name mynodejsapp ndimovflutter/mynodejsapp'
             }
         }
-       }
     }
  }
-
