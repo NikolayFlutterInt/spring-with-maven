@@ -59,5 +59,10 @@ pipeline {
                 sh 'docker run -d -p 8081:8080 ${IMAGE_NAME}:${BUILD_NUMBER}'
             }
         }
+        stage('test') {
+            steps {
+                echo "test"
+            }
+        }
     }
  }
