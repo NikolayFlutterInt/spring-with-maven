@@ -56,7 +56,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 8081:8081 ${IMAGE_NAME}:${BUILD_NUMBER}'
+                sh 'docker run -d -p 8081:8080 ${IMAGE_NAME}:${BUILD_NUMBER}'
             }
         }
     }
